@@ -1,0 +1,17 @@
+{
+  "name": "Lumen RajaOngkir",
+  "authors": [
+    {
+      "name": "Gede Lumbung",
+      "email": "gedesumawijaya@gmail.com",
+      "homepage": "http://gedelumbung.com"
+    }
+  ],
+  "dependencies": {
+    "jquery": "1.11.1",
+    "angular": "1.2.4",
+    "bootstrap": "3.2.0",
+    "angular-bootstrap": "0.10.0",
+    "ngAutocomplete": "https://github.com/ghiden/angucomplete-alt.git"
+  }
+}

@@ -11,6 +11,17 @@
 |
 */
 
-$app->get('/provinces', "IndexController@provinces");
-$app->get('/cities', "IndexController@cities");
-$app->post('/cost', "IndexController@cost");
+$app->group(['prefix' => 'api'], function ($app) {
+	
+	$ns = 'App\Http\Controllers\\';
+	$app->get('/provinces', "{$ns}ApiController@provinces");
+	$app->get('/cities/{id}', "{$ns}ApiController@getCitiesByProvince");
+	$app->get('/cities', "{$ns}ApiController@getCities");
+	$app->post('/cost', "{$ns}ApiController@cost");
+
+	$app->get('/', function(){
+		return "Boooomm!!!";
+	});
+});
+
+$app->get('/', "IndexController@index");

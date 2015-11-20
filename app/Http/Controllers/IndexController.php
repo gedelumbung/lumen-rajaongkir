@@ -1,43 +1,11 @@
 <?php namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use hok00age\RajaOngkir;
 
 class IndexController extends Controller
 {
-	private $rajaongkir;
-
-	public function __construct(){
-		$this->rajaongkir = new RajaOngkir(ENV("RAJA_ONGKIR_KEY"), ENV("RAJA_ONGKIR_ACCOUNT_TYPE"));
-	}
-
-    public function provinces(){
-        $provinces = $this->rajaongkir->getProvince();
-        return response()->json($this->_parse($provinces));
-    }
-
-    public function cities(){
-        $cities = $this->rajaongkir->getCity();
-        return response()->json($this->_parse($cities));
-    }
-
-    public function cost(Request $request){
-        $input = $request->input();
-
-        $rules = [
-            'origin' => 'required',
-            'destination' => 'required',
-            'weight' => 'required',
-        ];
-
-        $v = \Validator::make($input, $rules);
-
-        if($v->fails()){
-            return response()->json($v->messages());
-        }
-
-        $cities = $this->rajaongkir->getCost($input['origin'], $input['destination'], $input['weight']);
-        return response()->json($this->_parse($cities));
+    public function index(){
+        return view('index', ['asu' => 'asu']);
     }
 
     private function _parse($param){
